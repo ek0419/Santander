@@ -12,9 +12,10 @@ public class LogginFragmentModel implements LogginFragmentInterface.Model {
     }
 
     @Override
-    public void crearUsuario(String id, String nombre, String apellidos, String email, String password) {
+    public boolean crearUsuario(String id, String nombre, String apellidos, String email, String password) {
         //aqui va la logica de negocio
         repository.saveUserRepository(new ModelUser(id, nombre, apellidos, email, password));
+        return true;
     }
 
     @Override

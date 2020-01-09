@@ -21,24 +21,42 @@ public class LogginFragmentPresenter implements LogginFragmentInterface.Presente
     }
 
     @Override
-    public void buttonCliketed() {
+    public void buttonCliketed(boolean esRegistro) {
 
         if (view != null) {
-            if (view.getEmail().trim().isEmpty() || view.getPassword().trim().isEmpty()) {
-                view.mostarError("Ingresa tu usuario y contraseña");
+            if (esRegistro) {
+                if (validaComposCompetos()) {
+                    view.mostarError("Faltan campos por llenar");
+                }
+                else {
+                    if (
+                    model.crearUsuario("0",
+                            view.getNombre().trim()
+                            , view.getApellidos().trim()
+                            , view.getEmail().trim()
+                            , view.getPassword().trim())
+                    ){
+                        view.mostarError("Usuario Creado");
+                        view.cerrarREgistro();
+                    }
+                }
             } else {
-                switch (/*model.validaUsuario(view.getEmail().trim(), view.getPassword().trim())*/1) {
-                    case ENUM.USUARIOINCORRECTO:
-                        view.mostarError("Ingresa un usuario vàlido");
-                        break;
-                    case ENUM.CONTRASENIAINCONRECTA:
-                        view.mostarError("Ingresa una contraseña valida");
-                        break;
-                    case ENUM.USUARIOENCONTRADO:
-                        view.entrar();
-                        break;
-                    default:
-                        break;
+                if (view.getEmail().trim().isEmpty() || view.getPassword().trim().isEmpty()) {
+                    view.mostarError("Ingresa tu usuario y contraseña");
+                } else {
+                    switch (model.validaUsuario(view.getEmail().trim(), view.getPassword().trim())) {
+                        case ENUM.USUARIOINCORRECTO:
+                            view.mostarError("Ingresa un usuario vàlido");
+                            break;
+                        case ENUM.CONTRASENIAINCONRECTA:
+                            view.mostarError("Ingresa una contraseña valida");
+                            break;
+                        case ENUM.USUARIOENCONTRADO:
+                            view.entrar();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -64,6 +82,13 @@ public class LogginFragmentPresenter implements LogginFragmentInterface.Presente
                 view.setApellidos(user.getApellidos());
             }
         }
+    }
+
+    private boolean validaComposCompetos() {
+        return view.getNombre().trim().isEmpty()
+                || view.getApellidos().trim().isEmpty()
+                || view.getEmail().trim().isEmpty()
+                || view.getPassword().trim().isEmpty();
     }
 }
 

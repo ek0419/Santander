@@ -24,12 +24,14 @@ public interface LogginFragmentInterface {
 
         void setApellidos(String apellidos);
 
+        void cerrarREgistro();
+
     }
 
     interface Presenter {
         void setView(LogginFragmentInterface.View view);
 
-        void buttonCliketed();
+        void buttonCliketed(boolean tipoVista);
 
         void mostrarMensaje(String mensaje);
 
@@ -39,7 +41,7 @@ public interface LogginFragmentInterface {
 
     interface Model {
 
-        void crearUsuario(String id, String nombre, String Apellidos, String email, String password);
+        boolean crearUsuario(String id, String nombre, String Apellidos, String email, String password);
 
         ModelUser getUser();
 

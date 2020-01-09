@@ -51,6 +51,7 @@ class FirebaseLogginUser {
 
     void saveUserIntoFirebase(ModelUser user) {
         reference.push().setValue(user);
+
     }
 
     ModelUser getUserFirebase() {

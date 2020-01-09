@@ -23,6 +23,7 @@ public class LogginFragment extends Fragment implements LogginFragmentInterface.
 
     private FragmentLogginBinding binding;
     private MainActivityInterface mainActivityInterface;
+    private boolean esRegistro;
 
     @Inject
     LogginFragmentInterface.Presenter presenter;
@@ -31,7 +32,7 @@ public class LogginFragment extends Fragment implements LogginFragmentInterface.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLogginBinding.inflate(inflater, container, false);
-        binding.btnEnviarDatos.setOnClickListener(view -> presenter.buttonCliketed());
+        binding.btnEnviarDatos.setOnClickListener(view -> validarRegistro());
         binding.btnlevantarRegistro.setOnClickListener(view -> levantarRegistro());
         binding.btnCerrarRegistro.setOnClickListener(view -> cerrarREgistro());
         return binding.getRoot();
@@ -106,6 +107,27 @@ public class LogginFragment extends Fragment implements LogginFragmentInterface.
         binding.tiApellidos.setText(apellidos);
     }
 
+    @Override
+    public void cerrarREgistro() {
+
+        esRegistro = false;
+        binding.tilNombre.setVisibility(View.GONE);
+        binding.tieApellidos.setVisibility(View.GONE);
+        binding.btnlevantarRegistro.setVisibility(View.GONE);
+        binding.tvtitleTipoVista.setText(getResources().getString(R.string.loggin_msg_title_LOGIN));
+        binding.clLoggin.setBackgroundColor(getResources().getColor(R.color.morado));
+        binding.btnCerrarRegistro.setVisibility(View.GONE);
+        binding.btnlevantarRegistro.setVisibility(View.VISIBLE);
+
+        binding.tiNombre.setText(getResources().getString(R.string.msj_generico_vacio));
+        binding.tiApellidos.setText(getResources().getString(R.string.msj_generico_vacio));
+        binding.tiEmail.setText(getResources().getString(R.string.msj_generico_vacio));
+        binding.tiPassword.setText(getResources().getString(R.string.msj_generico_vacio));
+        binding.tiPassword.clearFocus();
+
+
+    }
+
     private void levantarRegistro()
     {
         binding.tilNombre.setVisibility(View.VISIBLE);
@@ -114,18 +136,14 @@ public class LogginFragment extends Fragment implements LogginFragmentInterface.
         binding.tvtitleTipoVista.setText(getResources().getString(R.string.loggin_msg_title_REGISTRO));
         binding.clLoggin.setBackgroundColor(getResources().getColor(R.color.loggin_rosa));
         binding.btnCerrarRegistro.setVisibility(View.VISIBLE);
+        esRegistro = true;
+
     }
 
-    private void cerrarREgistro()
-    {
-
-        binding.tilNombre.setVisibility(View.GONE);
-        binding.tieApellidos.setVisibility(View.GONE);
-        binding.btnlevantarRegistro.setVisibility(View.GONE);
-        binding.tvtitleTipoVista.setText(getResources().getString(R.string.loggin_msg_title_LOGIN));
-        binding.clLoggin.setBackgroundColor(getResources().getColor(R.color.morado));
-        binding.btnCerrarRegistro.setVisibility(View.GONE);
-        binding.btnlevantarRegistro.setVisibility(View.VISIBLE);
+    private void validarRegistro(){
+        presenter.buttonCliketed(esRegistro);
     }
+
+
 
 }
