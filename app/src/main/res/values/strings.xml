@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Trabajo</string>
+
+    <!-- loggin -->
+    <string name="loggin_msg_primer_nombres">Nombre(s)</string>
+    <string name="loggin_msg_apellidos">Apellidos</string>
+    <string name="loggin_msg_email">E-mail</string>
+    <string name="loggin_msg_password">Password</string>
+    <string name="loggin_btn_crear_cuenta">Crear cuenta</string>
+    <string name="loggin_msg_saludo">Hola!</string>
+    <string name="loggin_msg_title_REGISTRO">REGISTRO</string>
+    <string name="loggin_msg_title_LOGIN">LOGIN</string>
+    <string name="loggin_msg_Registrarse">Registrarse</string>
+
+   <!-- nombre menu -->
+    <string name="menu_comida_nombre_producto">Ingresa el nombre del producto</string>
+    <string name="menu_comida_msj_ingres_precio_producto">Ingres el precio del producto</string>
+
+    <!-- mensajes general -->
+    <string name="msj_generico_btn_agregar">Agregar</string>
+
+
+</resources>

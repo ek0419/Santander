@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "52639079816",
+    "firebase_url": "https://trabajo-343eb.firebaseio.com",
+    "project_id": "trabajo-343eb",
+    "storage_bucket": "trabajo-343eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52639079816:android:65c84b0b6106e1342fae3d",
+        "android_client_info": {
+          "package_name": "com.example.trabajo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52639079816-guurb4a2h6605pnf7k00qprch909e8bd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trabajo",
+            "certificate_hash": "e8b63aa20c998cc4675d13aab0b5b080e64727a8"
+          }
+        },
+        {
+          "client_id": "52639079816-iv85ureenj26jkc3ng3kqqtkg48k665n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trabajo",
+            "certificate_hash": "51e37ff8a16c4e713c0ca7c4cd34db14f6632dc8"
+          }
+        },
+        {
+          "client_id": "52639079816-r0o0oa2a5i09quif1r4u9566e6ge62k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVqhenv20ZK8OZ3sf5KTLVu439rSiC6Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52639079816-r0o0oa2a5i09quif1r4u9566e6ge62k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

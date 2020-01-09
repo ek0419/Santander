@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/morado"
+        tools:context=".MenuComida.MenuComidaFragment" >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etNombreProducto"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="27dp"
+            android:hint="@string/menu_comida_nombre_producto"
+            android:textColorHint="@color/blanco"
+            android:textSize="12sp"
+            android:backgroundTint="@color/blanco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPrecio"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="72dp"
+            android:hint="@string/menu_comida_msj_ingres_precio_producto"
+            android:backgroundTint="@color/blanco"
+            android:textColorHint="@color/blanco"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/etNombreProducto"
+            app:layout_constraintStart_toStartOf="@+id/etNombreProducto"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btAgregarProducto"
+            android:layout_width="0dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginEnd="27dp"
+            android:background="@drawable/btn_redondo_trasparente_blanco_generico"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/msj_generico_btn_agregar"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="137dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</layout>

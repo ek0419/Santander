@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- texinput layout>  -->
+    <style name="styloCabeceroTextInputLayout" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">10sp</item> <!-- tamaño del texto de layout -->
+        <item name="android:textColor">#ffffff</item><!-- color del texto de layout -->
+
+    </style>
+
+</resources>
