@@ -74,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loggin_msg_primer_nombres"
-                android:maxLength="5"
                 android:inputType="text"
                 android:textCursorDrawable="@drawable/cursor_blanco_generico"
                 android:textColor="@color/blanco"

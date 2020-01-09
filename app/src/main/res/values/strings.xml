@@ -18,6 +18,8 @@
 
     <!-- mensajes general -->
     <string name="msj_generico_btn_agregar">Agregar</string>
+    <string name="msj_generico_vacio">""</string>
+
 
 
 </resources>
