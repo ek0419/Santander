@@ -12,7 +12,7 @@
     <string name="loggin_msg_title_LOGIN">LOGIN</string>
     <string name="loggin_msg_Registrarse">Registrarse</string>
 
-   <!-- nombre menu -->
+    <!-- nombre menu -->
     <string name="menu_comida_nombre_producto">Ingresa el nombre del producto</string>
     <string name="menu_comida_msj_ingres_precio_producto">Ingres el precio del producto</string>
 
@@ -20,6 +20,8 @@
     <string name="msj_generico_btn_agregar">Agregar</string>
     <string name="msj_generico_vacio">""</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
