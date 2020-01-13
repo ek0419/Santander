@@ -19,9 +19,23 @@
     <!-- mensajes general -->
     <string name="msj_generico_btn_agregar">Agregar</string>
     <string name="msj_generico_vacio">""</string>
+    <string name="msj_generico_cencelar">Cancelar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <!-- Biometric prom -->
+    <string name="msj_huella_autenticacion_title">Acceder con huella a la app</string>
+    <string name="msj_huella_autenticacion_auth">Autenticación con huella digital</string>
+    <string name="msj_huella_autenticacion_escanea">Escanea tu huella para ingresar</string>
+    <string name="msj_huella_autenticacion_toca_sensor">Toca el sensor</string>
+
+    <!-- fingerPrint-->
+
+    <string name="title_fingerprint">Inicie secion con su huella</string>
+    <string name="desc_fingerprint">Coloque la huella del dedo en el escáner para verificar su identidad.</string>
+    <string name="note">(El inicio de sesión con huella digital hace que el inicio de sesión de su aplicación sea mucho más rápido. Su dispositivo debe tener al menos una huella digital registrada en la configuración del dispositivo)</string>
+    <string name="title_activity_home">Huella dactilar</string>
+    <string name="activity_home_desc">Has iniciado sesión correctamente con la autenticación de huella digital</string>
+    <string name="activity_home_note">Cierre y vuelva a abrir la aplicación para ver la pantalla de autenticación de huellas digitales nuevamente</string>
 
 
 </resources>
