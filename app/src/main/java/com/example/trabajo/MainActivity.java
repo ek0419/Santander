@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
+        lanzarFingerPrint();
 
     }
 
@@ -63,6 +63,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onResume();
         IntentFilter filter = new IntentFilter(BATTERY_SERVICE);
         filter.addAction(Intent.ACTION_BATTERY_CHANGED);
-        registerReceiver(receiver,filter);
+        registerReceiver(receiver, filter);
     }
 }

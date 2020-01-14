@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.trabajo.R;
@@ -46,13 +48,13 @@ public class BiometricPromptFragment extends Fragment {
                 .setNegativeButtonText(getResources().getString(R.string.msj_generico_cencelar))
                 .build();
 
-        Executor newExecutor = Executors.newSingleThreadExecutor();
+         Executor newExecutor = ContextCompat.getMainExecutor(getActivity());
 
         final BiometricPrompt biometricPrompt = new BiometricPrompt(getActivity(), newExecutor,new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                if (errorCode == BiometricPrompt.ERROR_CANCELED) {
+                if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                     UTUtils.mostrarToas(getActivity(), "Usuario cancelo", false);
                 } else {
                     UTUtils.mostrarToas(getActivity(), "Se produjo un error", false);
@@ -75,6 +77,27 @@ public class BiometricPromptFragment extends Fragment {
         });
 
         biometricPrompt.authenticate(autentication);
+    }
+
+
+
+    private void contieneHardware()
+    {
+        BiometricManager biometricManager = BiometricManager.from(getActivity());
+        switch (biometricManager.canAuthenticate()) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                UTUtils.mostrarToas(getActivity(),"La aplicación puede autenticarse utilizando biometría.",true);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                UTUtils.mostrarToas(getActivity(), "No hay características biométricas disponibles en este dispositivo.",true);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                UTUtils.mostrarToas(getActivity(),"Las características biométricas no están disponibles actualmente.",false);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                UTUtils.mostrarToas(getActivity(),"El usuario no ha asociado ninguna credencial biométrica con su cuenta.",false);
+                break;
+        }
     }
 
 }
