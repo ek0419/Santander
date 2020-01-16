@@ -86,16 +86,16 @@ public class BiometricPromptFragment extends Fragment {
         BiometricManager biometricManager = BiometricManager.from(getActivity());
         switch (biometricManager.canAuthenticate()) {
             case BiometricManager.BIOMETRIC_SUCCESS:
-                UTUtils.mostrarToas(getActivity(),"La aplicación puede autenticarse utilizando biometría.",true);
+                UTUtils.mostrarToas(getActivity(),getResources().getString(R.string.msj_Biometric_se_puede_autenticar),true);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                UTUtils.mostrarToas(getActivity(), "No hay características biométricas disponibles en este dispositivo.",true);
+                UTUtils.mostrarToas(getActivity(), getResources().getString(R.string.msj_Biometric_no_biometric),true);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                UTUtils.mostrarToas(getActivity(),"Las características biométricas no están disponibles actualmente.",false);
+                UTUtils.mostrarToas(getActivity(),getResources().getString(R.string.msj_Biometric_no_disponibles),false);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                UTUtils.mostrarToas(getActivity(),"El usuario no ha asociado ninguna credencial biométrica con su cuenta.",false);
+                UTUtils.mostrarToas(getActivity(),getResources().getString(R.string.msj_Biometric_no_asociado),false);
                 break;
         }
     }

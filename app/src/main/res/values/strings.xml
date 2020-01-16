@@ -27,6 +27,11 @@
     <string name="msj_huella_autenticacion_auth">Autenticación con huella digital</string>
     <string name="msj_huella_autenticacion_escanea">Escanea tu huella para ingresar</string>
     <string name="msj_huella_autenticacion_toca_sensor">Toca el sensor</string>
+    <string name="msj_Biometric_se_puede_autenticar">La aplicación puede autenticarse utilizando biometría.</string>
+    <string name="msj_Biometric_no_biometric">No hay características biométricas disponibles en este dispositivo.</string>
+    <string name="msj_Biometric_no_disponibles">Las características biométricas no están disponibles actualmente.</string>
+    <string name="msj_Biometric_no_asociado">El usuario no ha asociado ninguna credencial biométrica con su cuenta.</string>
+
 
     <!-- fingerPrint-->
 
