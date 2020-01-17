@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.trabajo.BroadCastReceiver.OnChargeReceiver;
 import com.example.trabajo.FingerPrint.BiometricPromptFragment;
+import com.example.trabajo.GenericDialog.GenericDialogBuilder;
 import com.example.trabajo.Loggin.LogginFragment;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
@@ -24,13 +25,23 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        lanzarFingerPrint();
+
+        new GenericDialogBuilder
+                .Builder(this)
+                .setTitulo("Este es un titulo")
+                .setMensaje("Contenido del mensaje")
+                .setNegativeButton("Cancelar")
+                .setPositiveButton("Aceptar")
+                .create()
+                .show();
 
     }
 
 
     private void lanzarLoggin() {
         UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment());
+
+
     }
 
 
