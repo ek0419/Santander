@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Trabajo</string>
 
+    <!-- mensajes general -->
+    <string name="msj_generico_btn_agregar">Agregar</string>
+    <string name="msj_generico_vacio">""</string>
+    <string name="msj_generico_cencelar">Cancelar</string>
+    <string name="msj_generico_title">Titulo</string>
+    <string name="msj_generico_descripcion">Descripción</string>
+    <string name="msj_generico_aceptar">Aceptar</string>
+    <string name="msj_generico_si">Si</string>
+    <string name="msj_generico_no">No</string>
+
+
+
     <!-- loggin -->
     <string name="loggin_msg_primer_nombres">Nombre(s)</string>
     <string name="loggin_msg_apellidos">Apellidos</string>
@@ -15,11 +27,6 @@
     <!-- nombre menu -->
     <string name="menu_comida_nombre_producto">Ingresa el nombre del producto</string>
     <string name="menu_comida_msj_ingres_precio_producto">Ingres el precio del producto</string>
-
-    <!-- mensajes general -->
-    <string name="msj_generico_btn_agregar">Agregar</string>
-    <string name="msj_generico_vacio">""</string>
-    <string name="msj_generico_cencelar">Cancelar</string>
 
 
   <!-- Biometric prom -->
