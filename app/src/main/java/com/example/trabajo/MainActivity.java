@@ -15,6 +15,7 @@ import com.example.trabajo.GenericDialog.GenericDialogBuilder;
 import com.example.trabajo.Loggin.LogginFragment;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
+import com.google.firebase.database.core.utilities.Utilities;
 
 public class MainActivity extends AppCompatActivity implements MainActivityInterface {
 
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                 .Builder(this)
                 .setTitulo("Este es un titulo")
                 .setMensaje("Contenido del mensaje")
-                .setNegativeButton("Cancelar")
+                .setNegativeButton("Cancelar",dialog ->{
+                   UTUtils.mostrarToas(this,"oprimio cancelar",true);
+                })
                 .setPositiveButton("Aceptar")
                 .create()
                 .show();
