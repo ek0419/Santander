@@ -31,10 +31,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                 .Builder(this)
                 .setTitulo("Este es un titulo")
                 .setMensaje("Contenido del mensaje")
-                .setNegativeButton("Cancelar",dialog ->{
-                   UTUtils.mostrarToas(this,"oprimio cancelar",false);
-                   dialog.dismis();
-                })
                 .setPositiveButton("Aceptar")
                 .create()
                 .show();

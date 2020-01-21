@@ -75,24 +75,24 @@ public class GenericDialogBuilder implements GenericDialogInterface {
         }
 
         public Builder setPositiveButton(String titleButton) {
+
+            return setPositiveButton(titleButton,GenericDialogInterface::dismis);
+        }
+
+        private Builder setPositiveButton(String titleButton, GenericDialogInterface.OncliclckListener interfas) {
             Button button = view.findViewById(R.id.btnGenericDialogBotonPositivo);
-            if (titleButton == null) {
-                button.setVisibility(View.GONE);
-            } else {
-                button.setVisibility(View.VISIBLE);
-                button.setText(titleButton);
-            }
+            prepararBoton(button, titleButton, interfas);
             return this;
         }
 
+
         public Builder setNegativeButton(String titleButton) {
-            return setNegativeButton(titleButton,GenericDialogInterface::dismis);
+            return setNegativeButton(titleButton, GenericDialogInterface::dismis);
         }
 
-        public Builder setNegativeButton(String titleButton,GenericDialogInterface.OncliclckListener interefas)
-        {
+        public Builder setNegativeButton(String titleButton, GenericDialogInterface.OncliclckListener interefas) {
             Button button = view.findViewById(R.id.btnGenericDialogBotonNegativo);
-            prepararBoton(button,titleButton,interefas);
+            prepararBoton(button, titleButton, interefas);
             return this;
         }
 
@@ -106,22 +106,24 @@ public class GenericDialogBuilder implements GenericDialogInterface {
             return genericDialogBuilder;
         }
 
-        private void prepararBoton(Button boton,String texto,GenericDialogInterface.OncliclckListener listener)
-        {
-            if (texto == null)
-            {
+        private void prepararBoton(Button boton, String texto, GenericDialogInterface.OncliclckListener listener) {
+            if (texto == null) {
                 boton.setVisibility(View.GONE);
-            }
-            else
-            {
+            } else {
                 boton.setVisibility(View.VISIBLE);
                 boton.setText(texto);
-                boton.setOnClickListener( v -> {
-                    if (listener!= null)
-                    {
+                boton.setOnClickListener(v -> {
+                    if (listener != null) {
                         listener.onClik(genericDialogBuilder);
                     }
                 });
+            }
+        }
+
+
+        private void dismis() {
+            if (genericDialogBuilder.dialog != null) {
+                genericDialogBuilder.dialog.dismiss();
             }
         }
     }
