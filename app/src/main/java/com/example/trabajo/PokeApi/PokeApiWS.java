@@ -6,7 +6,6 @@ import android.util.Log;
 import com.example.trabajo.retrofit.RequestManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -21,19 +20,22 @@ public class PokeApiWS {
         baseURL = "https://pokeapi.co/api/v2/";
     }
 
-    public PokeApiModel consultaServicio() {
+    public ArrayList<Pokemones> consultaServicio(int offset) {
 
-        PokeApiModel result = null;
+        ArrayList<Pokemones> result = new ArrayList<>();
+
 
         requestManager = new RequestManager(baseURL);
 
         Call<PokeApiModel> call = requestManager.create(pokeapInterfaceWS.class)
-                .consultaPokemons(0, 10);
-
+                .consultaPokemons(offset, 20);
         try {
-
             Response<PokeApiModel> response = call.execute();
-             result = response.body();
+            PokeApiModel lista = response.body();
+            if (lista != null)
+                for (int i = 0; i < lista.component1().size(); i++) {
+                    result.add(new Pokemones(lista.component1().get(i).getName(),lista.component1().get(i).getUrl()));
+                }
 
             Log.e("-->>>", result.toString());
 

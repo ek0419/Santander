@@ -12,3 +12,5 @@ data class Result(
         @SerializedName("name") val name: String? = null,
         @SerializedName("url") val url: String? = null
 )
+
+data class Pokemones(val nombre:String? , val url: String?)
