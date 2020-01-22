@@ -12,7 +12,6 @@
     <string name="msj_generico_no">No</string>
 
 
-
     <!-- loggin -->
     <string name="loggin_msg_primer_nombres">Nombre(s)</string>
     <string name="loggin_msg_apellidos">Apellidos</string>
@@ -29,7 +28,7 @@
     <string name="menu_comida_msj_ingres_precio_producto">Ingres el precio del producto</string>
 
 
-  <!-- Biometric prom -->
+    <!-- Biometric prom -->
     <string name="msj_huella_autenticacion_title">Acceder con huella a la app</string>
     <string name="msj_huella_autenticacion_auth">Autenticación con huella digital</string>
     <string name="msj_huella_autenticacion_escanea">Escanea tu huella para ingresar</string>
@@ -48,6 +47,9 @@
     <string name="title_activity_home">Huella dactilar</string>
     <string name="activity_home_desc">Has iniciado sesión correctamente con la autenticación de huella digital</string>
     <string name="activity_home_note">Cierre y vuelva a abrir la aplicación para ver la pantalla de autenticación de huellas digitales nuevamente</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

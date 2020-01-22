@@ -13,6 +13,7 @@ import com.example.trabajo.BroadCastReceiver.OnChargeReceiver;
 import com.example.trabajo.FingerPrint.BiometricPromptFragment;
 import com.example.trabajo.GenericDialog.GenericDialogBuilder;
 import com.example.trabajo.Loggin.LogginFragment;
+import com.example.trabajo.PokeApi.PokeapiFragment;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
 import com.google.firebase.database.core.utilities.Utilities;
@@ -27,23 +28,18 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        new GenericDialogBuilder
-                .Builder(this)
-                .setTitulo("Este es un titulo")
-                .setMensaje("Contenido del mensaje")
-                .setPositiveButton("Aceptar")
-                .create()
-                .show();
-
+        lanzarPokeapi();
     }
 
 
     private void lanzarLoggin() {
         UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment());
-
-
     }
 
+    private void lanzarPokeapi()
+    {
+        UTUtils.lanzarFragment(getSupportFragmentManager(),R.id.flContainer,new PokeapiFragment());
+    }
 
     @Override
     public void remplazarFragmento(Fragment fragment) {
