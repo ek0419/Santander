@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.trabajo.BroadCastReceiver.OnChargeReceiver;
+import com.example.trabajo.Clima.ClimaFragment;
 import com.example.trabajo.FingerPrint.BiometricPromptFragment;
 import com.example.trabajo.GenericDialog.GenericDialogBuilder;
 import com.example.trabajo.Loggin.LogginFragment;
@@ -28,17 +29,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        lanzarPokeapi();
+        lanzarClima();
     }
 
+
+    private void lanzarClima() {
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment());
+    }
 
     private void lanzarLoggin() {
         UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment());
     }
 
-    private void lanzarPokeapi()
-    {
-        UTUtils.lanzarFragment(getSupportFragmentManager(),R.id.flContainer,new PokeapiFragment());
+    private void lanzarPokeapi() {
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new PokeapiFragment());
     }
 
     @Override
