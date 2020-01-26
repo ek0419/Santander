@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:padding="8dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-       >
+        android:padding="8dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CardView"
@@ -16,10 +15,10 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:elevation="5dp"
+            app:cardBackgroundColor="@color/morado_transparente"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/morado_transparente"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,32 +29,32 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvNombre"
+                    android:id="@+id/tvNombrePlaneta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center_horizontal"
                     android:textColor="@color/blanco"
                     android:textSize="15sp"
-                    android:gravity="center_horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Titulo" />
 
                 <androidx.appcompat.widget.AppCompatCheckedTextView
-                    android:id="@+id/tvNumero"
+                    android:id="@+id/tvDiametro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:textSize="15sp"
                     android:textColor="@color/blanco"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tvNombre"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNombre"
+                    app:layout_constraintStart_toStartOf="@+id/tvNombrePlaneta"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNombrePlaneta"
                     tools:text="Nº">
 
                 </androidx.appcompat.widget.AppCompatCheckedTextView>
@@ -65,11 +64,13 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dia"
                     android:gravity="center_horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNumero">
+                    app:layout_constraintTop_toBottomOf="@+id/tvDiametro">
 
                 </androidx.appcompat.widget.AppCompatImageView>
 

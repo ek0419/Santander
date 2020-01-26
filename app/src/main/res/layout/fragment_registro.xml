@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/clLoggin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/morado">
+
+
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/tvSaludo"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="27dp"
+            android:text="@string/loggin_msg_saludo"
+            android:textAlignment="center"
+            android:textColor="@color/blanco"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatCheckedTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvtitleTipoVista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/loggin_msg_title_LOGIN"
+            android:textColor="@color/blanco"
+            app:layout_constraintStart_toStartOf="@+id/tvSaludo"
+            app:layout_constraintTop_toBottomOf="@+id/tvSaludo">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombre"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:textColorHint="@color/blanco"
+            app:boxStrokeColor="@color/blanco"
+            android:visibility="visible"
+            app:hintTextAppearance="@style/styloCabeceroTextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtitleTipoVista">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/loggin_msg_primer_nombres"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/cursor_blanco_generico"
+                android:textColor="@color/blanco"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="203dp">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tieApellidoPa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColorHint="@color/blanco"
+            app:boxStrokeColor="@color/blanco"
+            android:visibility="visible"
+            app:hintTextAppearance="@style/styloCabeceroTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/tilNombre"
+            app:layout_constraintStart_toStartOf="@+id/tilNombre"
+            app:layout_constraintTop_toBottomOf="@+id/tilNombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiApellidoPa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:hint="@string/loggin_msg_apellido_paterno"
+                android:textCursorDrawable="@drawable/cursor_blanco_generico"
+                android:textColor="@color/blanco">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tieApellidoMa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColorHint="@color/blanco"
+            android:visibility="visible"
+            app:boxStrokeColor="@color/blanco"
+            app:hintTextAppearance="@style/styloCabeceroTextInputLayout"
+            app:layout_constraintEnd_toEndOf="@+id/tieApellidoPa"
+            app:layout_constraintStart_toStartOf="@+id/tieApellidoPa"
+            app:layout_constraintTop_toBottomOf="@+id/tieApellidoPa">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiApellidoMa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/loggin_msg_apellido_materno"
+                android:inputType="text"
+                android:textColor="@color/blanco"
+                android:textCursorDrawable="@drawable/cursor_blanco_generico">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:textColorHint="@color/blanco"
+            app:boxStrokeColor="@color/blanco"
+            app:hintTextAppearance="@style/styloCabeceroTextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tieApellidoMa">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiFechaNa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/loggin_msg_title_fecha_nacimiento"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blanco"
+                android:textCursorDrawable="@drawable/cursor_blanco_generico">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEnviarDatos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_redondo_trasparente_blanco_generico"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:text="@string/loggin_msg_title_LOGIN"
+            android:textColor="@color/blanco"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

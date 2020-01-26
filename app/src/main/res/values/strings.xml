@@ -15,12 +15,16 @@
     <!-- loggin -->
     <string name="loggin_msg_primer_nombres">Nombre(s)</string>
     <string name="loggin_msg_apellidos">Apellidos</string>
+    <string name="loggin_msg_apellido_paterno">Apellido paterno</string>
+    <string name="loggin_msg_apellido_materno">Apellido materno</string>
     <string name="loggin_msg_email">E-mail</string>
     <string name="loggin_msg_password">Password</string>
+    <string name="loggin_msg_pais">Pais</string>
     <string name="loggin_btn_crear_cuenta">Crear cuenta</string>
     <string name="loggin_msg_saludo">Hola!</string>
     <string name="loggin_msg_title_REGISTRO">REGISTRO</string>
     <string name="loggin_msg_title_LOGIN">LOGIN</string>
+    <string name="loggin_msg_title_fecha_nacimiento">Fecha de nacimiento</string>
     <string name="loggin_msg_Registrarse">Registrarse</string>
 
     <!-- nombre menu -->
@@ -50,6 +54,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_planetas">PlanetasAct</string>
 
 
 </resources>

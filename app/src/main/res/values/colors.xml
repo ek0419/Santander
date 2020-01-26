@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#1A237E</color>
+    <color name="colorPrimaryDark">#7986CB</color>
+    <color name="colorAccent">#7986CB</color>
     <color name="negro">#000000</color>
     <color name="blanco">#FFFFFF</color>
-    <color name="morado">#293B72</color>
+    <color name="morado">#29467E</color>
     <color name="rojo">#FC0303</color>
     <color name="azul">#0076eb</color>
     <color name="loggin_rosa">#FF2E7A</color>
     <color name="loggin_gris">#ECECEC</color>
     <color name="transparente">#00ffffff</color>
-    <color name="moradoClaro">#7D87A7</color>
+    <color name="morado_transparente">#ADC1E2</color>
+    <color name="moradoClaro">#806D81A4</color>
     <color name="mtrl_textinput_default_box_stroke_color"
         tools:override="true">#fff</color>
+
+    <color name="splash">#3490dc</color>
+    <color name="errorDefaultColor">#D44539</color>
+    <color name="colorLineEditText">#FFFFFF</color>
 </resources>

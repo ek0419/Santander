@@ -1,10 +1,18 @@
 package com.example.trabajo.Utilerias;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Point;
+import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -13,6 +21,8 @@ import com.example.trabajo.R;
 
 
 public class UTUtils {
+
+    private static final String TAG =  UTUtils.class.getSimpleName();
 
     //lotie
     private static androidx.appcompat.app.AlertDialog.Builder dialog;
@@ -57,6 +67,43 @@ public class UTUtils {
             alertDialogTransparent.dismiss();
             dialog = null;
         }
+    }
+
+    private void lanzarActivity(Context context, Class<?> clsy,boolean finish)
+    {
+        Intent intent = new Intent(context,clsy);
+        context.startActivity(intent);
+        if (finish)
+        {
+
+        }
+    }
+
+    public static void setDialogWindowSize(Dialog dialog, int widthPercent, int heightPercent) {
+        float newHeight;
+        float newWidth;
+        if (dialog == null)
+            return;
+        if (widthPercent > 0 && widthPercent <= 100 && heightPercent > 0 && heightPercent <= 100) {
+            try {
+                Window window = dialog.getWindow();
+                Point size = new Point();
+                Display display;
+                if (window != null) {
+                    display = window.getWindowManager().getDefaultDisplay();
+                    display.getSize(size);
+                    newWidth = size.x * ((float) widthPercent / 100);
+                    newHeight = size.y * ((float) heightPercent / 100);
+                    window.setLayout((int) newWidth, (int) newHeight);
+                    window.setGravity(Gravity.CENTER);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Ocurrió un error al modificar el tamaño de la ventana del dialogo");
+
+            }
+
+        }
+
     }
 
 }

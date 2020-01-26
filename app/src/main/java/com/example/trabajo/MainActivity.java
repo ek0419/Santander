@@ -12,12 +12,12 @@ import androidx.fragment.app.Fragment;
 import com.example.trabajo.BroadCastReceiver.OnChargeReceiver;
 import com.example.trabajo.Clima.ClimaFragment;
 import com.example.trabajo.FingerPrint.BiometricPromptFragment;
-import com.example.trabajo.GenericDialog.GenericDialogBuilder;
 import com.example.trabajo.Loggin.LogginFragment;
+import com.example.trabajo.Planetas.catalogo.CatalogoPlanetasFragment;
 import com.example.trabajo.PokeApi.PokeapiFragment;
+import com.example.trabajo.Registro.RegistroFragment;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
-import com.google.firebase.database.core.utilities.Utilities;
 
 public class MainActivity extends AppCompatActivity implements MainActivityInterface {
 
@@ -29,9 +29,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        lanzarClima();
+        lanzarCatalogoPlanetas();
     }
 
+    private void lanzarCatalogoPlanetas()
+    {
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment());
+    }
+
+    private void lanzarRegistro() {
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new RegistroFragment());
+    }
 
     private void lanzarClima() {
         UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment());

@@ -8,10 +8,11 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.trabajo"
-        minSdkVersion 22
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -70,6 +71,7 @@ dependencies {
     //BiometricPrompt
     implementation 'androidx.biometric:biometric:1.0.1'
 
+
     //retrofit
     api 'com.squareup.retrofit2:retrofit:2.3.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
@@ -84,6 +86,13 @@ dependencies {
         exclude group: 'stax', module: 'stax'
         exclude group: 'xpp3', module: 'xpp3'
     }
+
+    //multiDEx
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+    //mel
+   // implementation 'com.mel.utils:noeditabletext:0.0.9'
 
 
 }
