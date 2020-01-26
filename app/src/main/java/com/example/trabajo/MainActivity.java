@@ -34,23 +34,24 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
 
     private void lanzarCatalogoPlanetas()
     {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment(),true);
+
     }
 
     private void lanzarRegistro() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new RegistroFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new RegistroFragment(),false);
     }
 
     private void lanzarClima() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment(),false);
     }
 
     private void lanzarLoggin() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment(),false);
     }
 
     private void lanzarPokeapi() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new PokeapiFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new PokeapiFragment(),false);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
 
 
     private void lanzarFingerPrint() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new BiometricPromptFragment());
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new BiometricPromptFragment(),false);
     }
 
 
@@ -84,4 +85,5 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         filter.addAction(Intent.ACTION_BATTERY_CHANGED);
         registerReceiver(receiver, filter);
     }
+
 }

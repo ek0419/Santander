@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -22,7 +21,7 @@ import com.example.trabajo.R;
 
 public class UTUtils {
 
-    private static final String TAG =  UTUtils.class.getSimpleName();
+    private static final String TAG = UTUtils.class.getSimpleName();
 
     //lotie
     private static androidx.appcompat.app.AlertDialog.Builder dialog;
@@ -36,7 +35,11 @@ public class UTUtils {
         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    public static void lanzarFragment(FragmentManager manager, int container, Fragment fragment) {
+    public static void lanzarFragment(FragmentManager manager, int container, Fragment fragment, Boolean addToBackStack) {
+        if (addToBackStack) {
+            manager.beginTransaction().add(container, fragment).addToBackStack(null).commit();
+            return;
+        }
         manager.beginTransaction().add(container, fragment).commit();
     }
 
@@ -69,12 +72,10 @@ public class UTUtils {
         }
     }
 
-    private void lanzarActivity(Context context, Class<?> clsy,boolean finish)
-    {
-        Intent intent = new Intent(context,clsy);
+    private void lanzarActivity(Context context, Class<?> clsy, boolean finish) {
+        Intent intent = new Intent(context, clsy);
         context.startActivity(intent);
-        if (finish)
-        {
+        if (finish) {
 
         }
     }

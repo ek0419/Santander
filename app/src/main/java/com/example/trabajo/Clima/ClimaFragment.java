@@ -1,23 +1,16 @@
 package com.example.trabajo.Clima;
 
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.AndroidException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.trabajo.Clima.RecylerView.ClimaAdapter;
-import com.example.trabajo.Clima.RecylerView.ClimaInterface;
-import com.example.trabajo.R;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.FragmentClimaBinding;
 
@@ -30,7 +23,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class ClimaFragment extends Fragment {
+public class ClimaFragment extends Fragment implements ClimaAdapter.onItemSelectedClima {
 
     FragmentClimaBinding binding;
     CompositeDisposable mCompositeDisposable;
@@ -38,15 +31,6 @@ public class ClimaFragment extends Fragment {
     ClimaAdapter climaAdapter;
     private ArrayList<CrearCiudad> ciudades = new ArrayList<>();
 
-    private ClimaInterface interfas;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof ClimaInterface) {
-            interfas = (ClimaInterface) context;
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +77,7 @@ public class ClimaFragment extends Fragment {
     }
 
     private void contruirVista() {
-        climaAdapter = new ClimaAdapter(ciudades, interfas);
+        climaAdapter = new ClimaAdapter(ciudades, this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         binding.rvRecyclerClima.setLayoutManager(manager);
         binding.rvRecyclerClima.setItemAnimator(new DefaultItemAnimator());
@@ -104,4 +88,8 @@ public class ClimaFragment extends Fragment {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        
+    }
 }

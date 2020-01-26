@@ -1,6 +1,8 @@
 package com.example.trabajo.Planetas.catalogo;
 
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,22 +18,27 @@ public class PlanetasAdapter extends RecyclerView.Adapter<PlanetasAdapter.Planet
 
     private ArrayList<ItemPlaneta> list;
     private ItemPlaneta planeta;
+    private OnItemSelectedInterface interfaz;
 
-    public PlanetasAdapter(ArrayList<ItemPlaneta> list) {
+
+    public PlanetasAdapter(ArrayList<ItemPlaneta> list,OnItemSelectedInterface interfaz) {
         this.list = list;
+        this.interfaz = interfaz;
+
     }
 
     @NonNull
     @Override
     public PlanetasHolder onCreateViewHolder(@NonNull ViewGroup grupo, int viewType) {
-        return new PlanetasHolder(DataBindingUtil.inflate(LayoutInflater.from(grupo.getContext()), R.layout.car_view_planetas_item,grupo,false));
+        return new PlanetasHolder(DataBindingUtil.inflate(LayoutInflater.from(grupo.getContext()), R.layout.car_view_planetas_item, grupo, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull PlanetasHolder holder, int position) {
+
         planeta = list.get(position);
         holder.binding.tvNombrePlaneta.setText(planeta.getNombre());
-        holder.binding.tvDiametro.setText(planeta.getDiametro()) ;
+        holder.binding.tvDiametro.setText(planeta.getDiametro());
 
     }
 
@@ -47,6 +54,17 @@ public class PlanetasAdapter extends RecyclerView.Adapter<PlanetasAdapter.Planet
         public PlanetasHolder(@NonNull CarViewPlanetasItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+
+            View.OnClickListener clickListener = view -> {
+                interfaz.onItemClick(getAdapterPosition());
+            };
+
+            binding.CardView.setOnClickListener(clickListener);
         }
     }
+
+    public interface OnItemSelectedInterface {
+        void onItemClick(int position);
+    }
+
 }

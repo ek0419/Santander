@@ -1,7 +1,6 @@
 package com.example.trabajo.Clima.RecylerView;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,31 +9,29 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabajo.Clima.ClimaWSInterface;
 import com.example.trabajo.Clima.CrearCiudad;
 import com.example.trabajo.R;
-import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.CarViewClimaBinding;
 
 import java.util.ArrayList;
 
-public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaHolder> implements ClimaInterface {
+public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaHolder> {
     ArrayList<CrearCiudad> list = new ArrayList<>();
     private CrearCiudad ciudad;
+    private onItemSelectedClima onIntenselecteInterface;
 
-    private ClimaInterface interfaz;
     private Context context;
 
-    public ClimaAdapter(ArrayList<CrearCiudad> list, ClimaInterface interfaz) {
+    public ClimaAdapter(ArrayList<CrearCiudad> list, onItemSelectedClima onItemSelectedClima) {
         this.list = list;
-        this.interfaz = interfaz;
+        this.onIntenselecteInterface = onItemSelectedClima;
     }
 
     @NonNull
     @Override
     public ClimaHolder onCreateViewHolder(@NonNull ViewGroup group, int viewType) {
         context = group.getContext();
-        return new ClimaHolder(DataBindingUtil.inflate(LayoutInflater.from(group.getContext()), R.layout.car_view_clima, group, false));
+        return new ClimaHolder(DataBindingUtil.inflate(LayoutInflater.from(group.getContext()), R.layout.car_view_clima, group, false), onIntenselecteInterface);
     }
 
     @Override
@@ -50,19 +47,23 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ClimaHolder>
         return list.size();
     }
 
-    @Override
-    public void onClick(View v, int position) {
-        interfaz.onClick(v, position);
-        UTUtils.mostrarToas(context, "CLIC", false);
-    }
-
     class ClimaHolder extends RecyclerView.ViewHolder {
         CarViewClimaBinding binding;
+        onItemSelectedClima onItemSelectedClima;
 
-        public ClimaHolder(@NonNull CarViewClimaBinding binding) {
+        public ClimaHolder(@NonNull CarViewClimaBinding binding, onItemSelectedClima onItemSelectedClima) {
             super(binding.getRoot());
             this.binding = binding;
+            this.onItemSelectedClima = onItemSelectedClima;
+
+            View.OnClickListener clickListener = view -> {
+                onIntenselecteInterface.onItemClick(getAdapterPosition());
+            };
         }
 
+    }
+
+    public interface onItemSelectedClima {
+        void onItemClick(int position);
     }
 }

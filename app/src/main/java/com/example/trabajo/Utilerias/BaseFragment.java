@@ -22,4 +22,10 @@ public class BaseFragment extends Fragment {
         super.onPause();
         mCompositeDisposable.clear();
     }
+
+
+    public boolean onBackPressed() {
+        return false;
+    }
+
 }

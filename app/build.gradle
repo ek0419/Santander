@@ -92,7 +92,7 @@ dependencies {
 
 
     //mel
-   // implementation 'com.mel.utils:noeditabletext:0.0.9'
+    // implementation 'com.mel.utils:noeditabletext:0.0.9'
 
 
 }

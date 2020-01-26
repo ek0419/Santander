@@ -7,10 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabajo.Planetas.detalle.PlanetaDetalleFragment;
+import com.example.trabajo.R;
 import com.example.trabajo.Utilerias.BaseFragment;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.FragmentCatalogoPlanetasBinding;
@@ -18,10 +24,11 @@ import com.example.trabajo.databinding.FragmentCatalogoPlanetasBinding;
 import java.util.ArrayList;
 
 
-public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPlanetasInterface.View {
+public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPlanetasInterface.View, PlanetasAdapter.OnItemSelectedInterface {
 
     FragmentCatalogoPlanetasBinding binding;
     CatalogoPlanetasInterface.Presenter presenter;
+    private ArrayList<ItemPlaneta> list;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -54,7 +61,8 @@ public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPl
 
     @Override
     public void MostrarRecycler(ArrayList<ItemPlaneta> list) {
-        PlanetasAdapter adapter = new PlanetasAdapter(list);
+        this.list = list;
+        PlanetasAdapter adapter = new PlanetasAdapter(list, this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(RecyclerView.VERTICAL);
         binding.rvPlanetas.setLayoutManager(manager);
@@ -65,8 +73,11 @@ public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPl
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
+    public void onItemClick(int position) {
+        Fragment fragment = new PlanetaDetalleFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.flip_in,R.anim.flip_h);
+        transaction.replace(R.id.flContainer,fragment).commit();
     }
+
 }
