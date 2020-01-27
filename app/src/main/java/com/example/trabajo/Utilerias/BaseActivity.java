@@ -41,4 +41,5 @@ public class BaseActivity extends AppCompatActivity {
         Log.d(TAG, " accion = " + accion);
         return accion || super.onKeyDown(keyCode, event);
     }
+
 }

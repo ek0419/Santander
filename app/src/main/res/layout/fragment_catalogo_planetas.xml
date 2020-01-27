@@ -30,6 +30,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
+            android:visibility="gone"
             android:background="@drawable/btn_redondo_trasparente_blanco_generico"
             android:text="Sonsulta servicio"
             android:textAllCaps="false"

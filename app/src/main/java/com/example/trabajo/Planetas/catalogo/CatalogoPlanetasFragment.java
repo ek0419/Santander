@@ -7,11 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +37,7 @@ public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPl
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentCatalogoPlanetasBinding.inflate(inflater, container, false);
-        binding.btnConsultaWS.setOnClickListener(v -> presenter.consultaServicio());
+        presenter.consultaServicio();
 
         return binding.getRoot();
     }
@@ -74,10 +71,19 @@ public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPl
 
     @Override
     public void onItemClick(int position) {
-        Fragment fragment = new PlanetaDetalleFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.flip_in,R.anim.flip_h);
-        transaction.replace(R.id.flContainer,fragment).commit();
+        UTUtils.remplazarFragment(getFragmentManager(), R.id.flContainer, new PlanetaDetalleFragment(), true);
     }
 
+    @Override
+    public boolean onBackPressed() {
+        boolean accion = false;
+        if (!getChildFragmentManager().getFragments().isEmpty()) {
+            Fragment fragment = getChildFragmentManager().getFragments().get(0);
+            if (fragment instanceof BaseFragment) {
+                BaseFragment frag = (BaseFragment) fragment;
+                accion = frag.onBackPressed();
+            }
+        }
+        return (accion || super.onBackPressed());
+    }
 }

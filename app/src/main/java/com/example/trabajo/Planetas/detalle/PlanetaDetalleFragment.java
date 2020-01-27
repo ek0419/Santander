@@ -20,23 +20,4 @@ public class PlanetaDetalleFragment extends BaseFragment {
         binding = FragmentPlanetaDetalleBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
-    @Override
-    public boolean onBackPressed() {
-        UTUtils.mostrarToas(getActivity(), "OprimioRegreso", false);
-
-        if(getFragmentManager().getBackStackEntryCount() == 0)
-        {
-            try {
-                this.finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        }
-        else {
-            getFragmentManager().popBackStack();
-        }
-
-        return super.onBackPressed();
-    }
 }

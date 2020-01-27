@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -16,10 +15,11 @@ import com.example.trabajo.Loggin.LogginFragment;
 import com.example.trabajo.Planetas.catalogo.CatalogoPlanetasFragment;
 import com.example.trabajo.PokeApi.PokeapiFragment;
 import com.example.trabajo.Registro.RegistroFragment;
+import com.example.trabajo.Utilerias.BaseActivity;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements MainActivityInterface {
+public class MainActivity extends BaseActivity {
 
     BroadcastReceiver receiver;
     private ActivityMainBinding binding;
@@ -32,36 +32,30 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         lanzarCatalogoPlanetas();
     }
 
-    private void lanzarCatalogoPlanetas()
-    {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment(),true);
+    private void lanzarCatalogoPlanetas() {
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment(), false);
 
     }
 
     private void lanzarRegistro() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new RegistroFragment(),false);
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new RegistroFragment(), false);
     }
 
     private void lanzarClima() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment(),false);
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new ClimaFragment(), false);
     }
 
     private void lanzarLoggin() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment(),false);
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new LogginFragment(), false);
     }
 
     private void lanzarPokeapi() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new PokeapiFragment(),false);
-    }
-
-    @Override
-    public void remplazarFragmento(Fragment fragment) {
-        UTUtils.remplazarFragment(getSupportFragmentManager(), R.id.flContainer, fragment);
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new PokeapiFragment(), false);
     }
 
 
     private void lanzarFingerPrint() {
-        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new BiometricPromptFragment(),false);
+        UTUtils.lanzarFragment(getSupportFragmentManager(), R.id.flContainer, new BiometricPromptFragment(), false);
     }
 
 
@@ -75,15 +69,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(receiver); // destruye reciber
+//        unregisterReceiver(receiver); // destruye reciber
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        IntentFilter filter = new IntentFilter(BATTERY_SERVICE);
-        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
-        registerReceiver(receiver, filter);
+        //  IntentFilter filter = new IntentFilter(BATTERY_SERVICE);
+        //filter.addAction(Intent.ACTION_BATTERY_CHANGED);
+        //registerReceiver(receiver, filter);
     }
 
 }

@@ -37,14 +37,19 @@ public class UTUtils {
 
     public static void lanzarFragment(FragmentManager manager, int container, Fragment fragment, Boolean addToBackStack) {
         if (addToBackStack) {
-            manager.beginTransaction().add(container, fragment).addToBackStack(null).commit();
+            manager.beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right).add(container, fragment).addToBackStack(null).commit();
             return;
         }
-        manager.beginTransaction().add(container, fragment).commit();
+        manager.beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right).add(container, fragment).commit();
     }
 
-    public static void remplazarFragment(FragmentManager manager, int container, Fragment fragment) {
-        manager.beginTransaction().replace(container, fragment).commit();
+    public static void remplazarFragment(FragmentManager manager, int container, Fragment fragment, boolean addToBackStack) {
+        if (addToBackStack) {
+            manager.beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right).replace(container, fragment).addToBackStack(null).commit();
+            return;
+        }
+        manager.beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right).replace(container, fragment).addToBackStack(null).commit();
+
     }
 
     public static void mostrarProgressDialog(String title, String message, Context activity) {
