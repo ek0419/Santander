@@ -104,9 +104,10 @@ public class RegistroFragment extends Fragment {
         UTDatabaseManager bd = new UTDatabaseManager();
         UsuarioModel user = new UsuarioModel(0, binding.tiNombre.getText().toString(), binding.tiApellidoPa.getText().toString(), binding.tiApellidoMa.getText().toString(), binding.tiFechaNa.getText().toString());
         if (validaRegistroVacio(user)) {
-            int insert = bd.insertUsuario(getActivity(), user);
+          //  int insert = bd.insertUsuario(getActivity(), user);
+            int insert = bd.leerUsuario(getActivity());
             if (insert == 1) {
-                UTUtils.mostrarToas(getActivity(), "Usuario guardado en db", false);
+                UTUtils.mostrarToas(getActivity(), "Usuario leido  en db", false);
             } else {
                 UTUtils.mostrarToas(getActivity(), "Error al guardar Usuario", false);
             }
@@ -118,11 +119,12 @@ public class RegistroFragment extends Fragment {
     }
 
     private boolean validaRegistroVacio(UsuarioModel user) {
+
         if (user.getNombre().trim().isEmpty() ||
                 user.getAPaterno().trim().isEmpty()
                 || user.getAMaterno().trim().isEmpty()
                 || user.getFechaNacimiento().trim().isEmpty()) {
-            return false;
+            return true;
         } else {
             return true;
         }
