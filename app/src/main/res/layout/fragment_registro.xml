@@ -161,6 +161,7 @@
             android:focusable="true"
             android:text="@string/loggin_msg_title_LOGIN"
             android:textColor="@color/blanco"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">

@@ -4,6 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/blanco"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,7 +71,6 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-condensed-medium"
                             android:text="Rotacion"
-
                             android:textAlignment="center"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -110,14 +110,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-condensed-medium"
-                            android:text="Temperatura"
+                            android:text="Surface Water"
                             android:textAlignment="center"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatCheckedTextView
-                            android:id="@+id/tvtemperatura"
+                            android:id="@+id/tvSurfaceWater"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
