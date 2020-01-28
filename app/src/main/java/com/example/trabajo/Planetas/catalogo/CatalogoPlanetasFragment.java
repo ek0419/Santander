@@ -71,7 +71,7 @@ public class CatalogoPlanetasFragment extends BaseFragment implements CatalogoPl
 
     @Override
     public void onItemClick(int position) {
-        UTUtils.remplazarFragment(getFragmentManager(), R.id.flContainer, new PlanetaDetalleFragment(), true);
+        UTUtils.remplazarFragment(getFragmentManager(), R.id.flContainer, new PlanetaDetalleFragment(list.get(position).getUrl()), true);
     }
 
     @Override

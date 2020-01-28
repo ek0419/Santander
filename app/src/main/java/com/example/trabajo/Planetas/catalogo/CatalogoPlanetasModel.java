@@ -1,5 +1,7 @@
 package com.example.trabajo.Planetas.catalogo;
 
+import com.example.trabajo.Planetas.PlanetasWS;
+
 import java.util.ArrayList;
 
 public class CatalogoPlanetasModel implements CatalogoPlanetasInterface.Model {
@@ -14,7 +16,7 @@ public class CatalogoPlanetasModel implements CatalogoPlanetasInterface.Model {
 
     @Override
     public ArrayList<ItemPlaneta> getPlanetas() {
-        ws = new PlanetasWS();
+        ws = new PlanetasWS("https://swapi.co/");
         return ws.consultarPlanetas();
     }
 }

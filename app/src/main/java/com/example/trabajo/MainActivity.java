@@ -15,6 +15,7 @@ import com.example.trabajo.Loggin.LogginFragment;
 import com.example.trabajo.Planetas.catalogo.CatalogoPlanetasFragment;
 import com.example.trabajo.PokeApi.PokeapiFragment;
 import com.example.trabajo.Registro.RegistroFragment;
+import com.example.trabajo.TipoServicios.ServicesFragment;
 import com.example.trabajo.Utilerias.BaseActivity;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
@@ -28,8 +29,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+     // lanzarCatalogoPlanetas();
+        lanzarRegistro();
+    }
 
-        lanzarCatalogoPlanetas();
+    private void lanzarServices()
+    {
+        UTUtils.lanzarFragment(getSupportFragmentManager(),R.id.flContainer,new ServicesFragment(),false);
     }
 
     private void lanzarCatalogoPlanetas() {

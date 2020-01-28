@@ -1,5 +1,10 @@
-package com.example.trabajo.Planetas.catalogo;
+package com.example.trabajo.Planetas;
 
+import android.util.Log;
+
+import com.example.trabajo.Planetas.catalogo.ItemPlaneta;
+import com.example.trabajo.Planetas.catalogo.PlanetasModel;
+import com.example.trabajo.Planetas.detalle.PlanetasDetalleModel;
 import com.example.trabajo.retrofit.RequestManager;
 
 import java.util.ArrayList;
@@ -9,18 +14,19 @@ import retrofit2.Response;
 
 public class PlanetasWS {
 
-    private String BASEURL;
+    private String baseUrl;
     private RequestManager manager;
+    private static final String TAG = PlanetasWS.class.getSimpleName();
 
-    public PlanetasWS() {
-        BASEURL = "https://swapi.co/";
+    public PlanetasWS(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
-    ArrayList<ItemPlaneta> consultarPlanetas() {
+    public ArrayList<ItemPlaneta> consultarPlanetas() {
         ArrayList<ItemPlaneta> list = new ArrayList<>();
         PlanetasModel planeta;
 
-        manager = new RequestManager(BASEURL);
+        manager = new RequestManager(baseUrl);
         Call<PlanetasModel> call = manager.create(PlanetasWSInterface.class).planetas();
         try {
             Response<PlanetasModel> response = call.execute();
@@ -43,6 +49,22 @@ public class PlanetasWS {
             return list;
         }
         return list;
+    }
+
+    public PlanetasDetalleModel getDetallePlanetas(String parametro) {
+        manager = new RequestManager(baseUrl);
+        PlanetasDetalleModel model = new PlanetasDetalleModel();
+        String aux = parametro.replace("https://swapi.co/api/planets/", "");
+        String algo = aux.replace("/", "");
+        try {
+            Call<PlanetasDetalleModel> call = manager.create(PlanetasWSInterface.class).detalles(algo);
+            Response<PlanetasDetalleModel> response = call.execute();
+            return response.body();
+
+        } catch (Exception e) {
+            Log.e(TAG, "error al consumir servicio " + e.getMessage());
+            return model;
+        }
     }
 
 }
