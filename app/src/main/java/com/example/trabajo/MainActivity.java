@@ -17,8 +17,14 @@ import com.example.trabajo.PokeApi.PokeapiFragment;
 import com.example.trabajo.Registro.RegistroFragment;
 import com.example.trabajo.TipoServicios.ServicesFragment;
 import com.example.trabajo.Utilerias.BaseActivity;
+import com.example.trabajo.Utilerias.SQLite.UTDatabaseManager;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.databinding.ActivityMainBinding;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,8 +35,22 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-     // lanzarCatalogoPlanetas();
-        lanzarRegistro();
+        UTUtils.mostrarProgressDialog("","",this);
+        mCompositeDisposable.add(Observable.fromCallable(() -> {
+            UTDatabaseManager db = new UTDatabaseManager();
+            return db.leerUsuario(this);
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> {
+                    mCompositeDisposable.clear();
+                    UTUtils.esconderProgressDialog();
+                    if (result == 1) {
+                        lanzarCatalogoPlanetas();
+                    } else {
+                        lanzarRegistro();
+
+                    }
+                }));
+
     }
 
     private void lanzarServices()

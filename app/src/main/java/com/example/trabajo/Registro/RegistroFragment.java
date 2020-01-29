@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
+import com.example.trabajo.Planetas.catalogo.CatalogoPlanetasFragment;
+import com.example.trabajo.R;
+import com.example.trabajo.Utilerias.BaseFragment;
 import com.example.trabajo.Utilerias.General.UsuarioModel;
-import com.example.trabajo.Utilerias.SQLite.UTDatabaseManager;
 import com.example.trabajo.Utilerias.UTUtils;
 import com.example.trabajo.Utilerias.optionPiker.PickerDialogFragment;
 import com.example.trabajo.Utilerias.optionPiker.PickerOptionSelected;
@@ -28,27 +29,27 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
-public class RegistroFragment extends Fragment {
+public class RegistroFragment extends BaseFragment implements RegistroInterface.View {
 
     FragmentRegistroBinding binding;
     private PickerDialogFragment pickerDialogFragment;
     private DatePickerDialog.OnDateSetListener date;
     private Calendar calendar;
+    private RegistroInterface.Presenter presenter;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRegistroBinding.inflate(inflater, container, false);
-
-        cargarPais();
-
-        binding.btnEnviarDatos.setOnClickListener(v -> salvarUser());
+        // cargarPais();
+        binding.btnEnviarDatos.setOnClickListener(v -> creaUsuario());
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter = new RegistroPresenter(this, getActivity());
         initCalendar();
     }
 
@@ -100,36 +101,27 @@ public class RegistroFragment extends Fragment {
         });
     }
 
-    private void salvarUser() {
-        UTDatabaseManager bd = new UTDatabaseManager();
-        UsuarioModel user = new UsuarioModel(0, binding.tiNombre.getText().toString(), binding.tiApellidoPa.getText().toString(), binding.tiApellidoMa.getText().toString(), binding.tiFechaNa.getText().toString());
-        if (validaRegistroVacio(user)) {
-          //  int insert = bd.insertUsuario(getActivity(), user);
-            int insert = bd.leerUsuario(getActivity());
-            if (insert == 1) {
-                UTUtils.mostrarToas(getActivity(), "Usuario leido  en db", false);
-            } else {
-                UTUtils.mostrarToas(getActivity(), "Error al guardar Usuario", false);
-            }
-        } else {
-            UTUtils.mostrarToas(getActivity(), "Favor de llenar todos los campos", false);
-        }
-
-
-    }
-
-    private boolean validaRegistroVacio(UsuarioModel user) {
-
-        if (user.getNombre().trim().isEmpty() ||
-                user.getAPaterno().trim().isEmpty()
-                || user.getAMaterno().trim().isEmpty()
-                || user.getFechaNacimiento().trim().isEmpty()) {
-            return true;
-        } else {
-            return true;
-        }
+    private void creaUsuario() {
+        presenter.guardarUsuario(new UsuarioModel(0, binding.tiNombre.getText().toString(), binding.tiApellidoPa.getText().toString(), binding.tiApellidoMa.getText().toString(), binding.tiFechaNa.getText().toString()));
     }
 
 
-    //SELECT id,nombre, aPaterno, aMaterno, fechaNacimiento FROM usuarios
+    @Override
+    public void mostrarProgress(boolean mostrar) {
+        if (mostrar) {
+            UTUtils.mostrarProgressDialog("", "", getActivity());
+        } else {
+            UTUtils.esconderProgressDialog();
+        }
+    }
+
+    @Override
+    public void cambiarVista() {
+        UTUtils.lanzarFragment(getFragmentManager(), R.id.flContainer, new CatalogoPlanetasFragment(), false);
+    }
+
+    @Override
+    public void mostarMensaje(String mensaje) {
+        UTUtils.mostrarToas(getActivity(), mensaje, false);
+    }
 }
